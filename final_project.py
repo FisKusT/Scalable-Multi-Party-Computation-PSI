@@ -4,48 +4,10 @@ Created on Thu May 20 19:51:44 2021
 
 @author: Tal Fiskus
 """
-"""
-El-Gamal check
-import pandas as pd
-import numpy as np
-
-#Try Threshold El-Gamal
-from group import Zp
-from threshold_el_gamal import Threshold_El_Gamal
-import smpc_psi_p1 as smpc_p1
-import smpc_psi_pi as smpc_pi
-
-
-teg = Threshold_El_Gamal(7919)
-zp = teg.zp
-
-sk1 = zp.random()
-sk2 = zp.random()
-g = zp.g
-
-h1 = teg.get_h_i(sk1)
-h2 = teg.get_h_i(sk2)
-h_list = [h1,h2]
-h = teg.get_h(h_list)
-
-m1=3543
-m2 = 2000
-m3 = 1200
-c1 = teg.encrypt(h,m1)
-c2 = teg.encrypt(h,m2)
-c3 = teg.encrypt(h,m3)
-c = teg.add_encryptions([c1,c2,c3])
-temp_c_s_1 = teg.decrypt_s_i(c, sk1)
-temp_c_s_2 = teg.decrypt_s_i(c, sk2)
-temp_c_s_i = [temp_c_s_1, temp_c_s_2]
-g_m = teg.decrypt_msg(c,temp_c_s_i)
-#END of El-Gamal
-"""
 
 import pandas as pd
 from datetime import datetime
 
-#Try Threshold El-Gamal
 from threshold_el_gamal import Threshold_El_Gamal
 import smpc_psi_p1 as smpc_p1
 import smpc_psi_pi as smpc_pi
@@ -68,8 +30,8 @@ def print_timestamp(msg):
 #Print timestamp at the begining of the protocol
 print_timestamp("Start of protocol")
 
-#get players data
-players_inputs = pd.read_excel(r"C:\Users\user-pc\Desktop\final_project\PlayersInputs_100_5.xlsx")
+#get players data- Don't forget to add the inputs excel path 
+players_inputs = pd.read_excel(r"ADD_INPUTS_EXCEL_PATH_HERE.xlsx")
 
 #get P1 inputs
 p1_input = get_player_input(players_inputs,0)
