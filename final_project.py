@@ -30,8 +30,8 @@ def print_timestamp(msg):
 #Print timestamp at the begining of the protocol
 print_timestamp("Start of protocol")
 
-#get players data- Don't forget to add the inputs excel path 
-players_inputs = pd.read_excel(r"ADD_INPUTS_EXCEL_PATH_HERE.xlsx")
+#get players data
+players_inputs = pd.read_excel(r"C:\Users\user-pc\Desktop\final_project\PlayersInputs_100_5.xlsx")
 
 #get P1 inputs
 p1_input = get_player_input(players_inputs,0)
@@ -60,7 +60,7 @@ for i in range(n):
     sk.append(zp.random())
     h_i.append(teg.get_h_i(sk[i]))
 
-#P1 recevies every from every P_i his h_i, and Generates PK=<G,p,g,h>
+#P1 recevies from every P_i his h_i, and Generates PK=<G,p,g,h>
 h = teg.get_h(h_i)
 #P1 shares PK with every Pi
 
@@ -83,7 +83,7 @@ Q_x_list = smpc_p1.get_encrypted_polynoms_vals_from_inputs(p1_inputs, Q1_enc_pol
 #Phase 3: decrypt each of P1 encrypted values (Q_1(x_1^j)) using the threshold El-Gamal decryption scheme
 mpsi=[]
 for index, Q_x_i in enumerate(Q_x_list):
-    #P1 sends Q_x_i for every Pi and receives the decrepted:
+    #P1 sends Q_x_i for every Pi and receives the decrepted shares:
     decrpted_shares=[]
     for i in range(n):
         decrpted_shares.append(teg.decrypt_s_i(Q_x_i,sk[i]))
